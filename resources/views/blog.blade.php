@@ -7,6 +7,8 @@
             <strong>{{ $post->id }}</strong>
             <a href="{{ route('post', $post->slug) }}">{{ $post->title }}</a>
         </p>
+        <p>{{ $post->user->name }}</p>
+        <hr>
     @endforeach
     {{ $posts->links() }}
 @endsection
