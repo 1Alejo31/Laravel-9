@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -11,23 +12,21 @@ class PageController extends Controller
     {
         return view('home');
     }
+
     function blog()
     {
-        //Simulacion de consulta a db
-
-        $posts = [
-            ['id' => 1, 'title' => 'PHP', 'slug' => 'php'],
-            ['id' => 2, 'title' => 'LARAVEL', 'slug' => 'laravel'],
-        ];
-
+        //Traer todos los registros
+        //$posts = Post::get();
+        //Traer el primer registro
+        //$posts = Post::first();
+        //Traer por id
+        //$posts = Post::fid(25);
+        $posts = Post::latest()->paginate();
         return view('blog', ['posts' => $posts]);
     }
-    function post($slug)
+
+    function post(Post $post)
     {
-
-        //Simulacion de consulta a db
-
-        $post = $slug;
         return view('post', ['post' => $post]);
     }
 }
