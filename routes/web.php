@@ -11,16 +11,27 @@ use Illuminate\Http\Request;
  */
 
 Route::get('/', function () {
-    return 'Ruta Home';
+    return view('home');
 });
 
 Route::get('blog', function () {
-    return 'Listado de publicaciones';
+
+    //Simulacion de consulta a db
+
+    $posts = [
+        ['id' => 1, 'title' => 'PHP', 'slug' => 'php'],
+        ['id' => 2, 'title' => 'LARAVEL', 'slug' => 'laravel'],
+    ];
+
+    return view('blog', ['posts' => $posts]);
 });
 
 Route::get('blog/{slug}', function ($slug) {
+
     //Simulacion de consulta a db
-    return $slug;
+
+    $post = $slug;
+    return view('post', ['post' => $post]);
 });
 
 Route::get('buscar', function (Request $resquest) {
