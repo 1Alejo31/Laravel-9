@@ -19,4 +19,14 @@ class PostController extends Controller
         $post->delete(); 
         return back(); 
     }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', ['post' => $post]);
+    }
 }
