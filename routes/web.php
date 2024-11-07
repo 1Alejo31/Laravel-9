@@ -32,7 +32,7 @@ Route::get('buscar', function (Request $resquest) {
 });
  */
 
- Route::controller(PageController ::class)->group(function () {
+Route::controller(PageController::class)->group(function () {
     Route::get('/',             'home')->name('home');
 
     Route::get('blog',          'blog')->name('blog');
@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::resource('posts', PostController::class)->except(['show'])->middleware(['auth']);
+Route::recurce('posts', PostController::class)->except(['show']);
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
